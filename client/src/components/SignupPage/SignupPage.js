@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./LoginPage.css";
+import "./SignupPage.css";
 
 export default class SignupPage extends Component {
   constructor(props) {

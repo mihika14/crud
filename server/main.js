@@ -55,29 +55,22 @@ app.post("/loginuser", async (req, res) => {
 
   // if user does not exist
   // checking if E-mail exists
-  try {
     const user = await User.findOne({ email });
 
     if (!user) {
       return res.json({ error: "User not found" });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("Provided Password:", password);
-    console.log("Stored Hashed Password:", user.password);
-    console.log("Password Match:", passwordMatch);
-
-
-    if (passwordMatch) {
-      const token = jwt.sign({ email: user.email }, JWT_SECRET);
-
-      return res.json({ status: "ok", data: token });
-    } else {
-      return res.json({ error: "Invalid password" });
+    if(await bcrypt.compare(password, user.password)){
+      const token = jwt.sign({ }, JWT_SECRET);
+    if(res.status(201)){
+      return res.json({status: "ok" , data: token});
+    }else{
+      return res.json({error:"error"});
     }
-  } catch (error) {
-    return res.json({ error: "An error occurred" });
-  }
+    }
+    res.json({status: "error", error: "invalid password"})
+  
 });
 
 app.listen(5000, () => {

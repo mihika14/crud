@@ -1,8 +1,9 @@
 import React from "react";
 import TableCrud from "./components/TableCrud";
-import LoginPage from "./components/LoginPage";
-import SignupPage from "./components/SignupPage";
+import LoginPage from "./components/LoginPage/LoginPage";
+import SignupPage from "./components/SignupPage/SignupPage";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
     // </Router>
     <>
 
-    <SignupPage/>
-    <LoginPage/>
+    {/* <SignupPage/>
+    <LoginPage/> */}
+    <HomePage/>
     </>
   );
 }
