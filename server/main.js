@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
-const bcrypt = require("bcryptjs");
 
 const jwt = require("jsonwebtoken");
 
@@ -30,22 +29,22 @@ const User = mongoose.model("users");
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password } = req.body;
 
-  const encryptedPassword = await bcrypt.hash(password, 10);
   try {
     const oldUser = await User.findOne({ email });
 
     if (oldUser) {
       return res.json({ error: "User Exists" });
     }
+    
     await User.create({
       fname,
       lname,
       email,
-      password: encryptedPassword,
+      password,
     });
     res.send({ status: "ok" });
   } catch (error) {
-    res.end({ status: "error" });
+    res.send({ status: "error" });
   }
 });
 
@@ -53,25 +52,39 @@ app.post("/register", async (req, res) => {
 app.post("/loginuser", async (req, res) => {
   const { email, password } = req.body;
 
-  // if user does not exist
-  // checking if E-mail exists
-    const user = await User.findOne({ email });
+  const user = await User.findOne({ email });
 
-    if (!user) {
-      return res.json({ error: "User not found" });
-    }
+  if (!user) {
+    return res.json({ error: "User not found" });
+  }
 
-    if(await bcrypt.compare(password, user.password)){
-      const token = jwt.sign({ }, JWT_SECRET);
-    if(res.status(201)){
-      return res.json({status: "ok" , data: token});
-    }else{
-      return res.json({error:"error"});
+  if (password === user.password) {
+    const token = jwt.sign({}, JWT_SECRET);
+    if (res.status(201)) {
+      return res.json({ status: "ok", data: token });
+     
+    } else {
+      return res.json({ error: "error" });
     }
-    }
-    res.json({status: "error", error: "invalid password"})
+  }
   
+  res.json({ status: "error", error: "invalid password" });
 });
+
+app.post('./userData' , async(req , res) => {
+  const { token } = req.bidy;
+  try{
+const user = jwt.verify(token, JWT_SECRET)
+const useremail = user.email;
+User.findOne({email: useremail})
+.then((data) => {
+  res.json({status: 'ok' , data:'data'})
+}).catch((error)=> {
+  res.send({status:'error' , data:'error'})
+});
+  }catch(error){}
+})
+
 
 app.listen(5000, () => {
   console.log("server running on port 5000");

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SignupPage.css";
+import { Link } from "react-router-dom";
 
 export default class SignupPage extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class SignupPage extends Component {
     }).then((res)=>res.json())
     .then((data) =>{
         console.log(data, "userRegister");
+
     })
   }
   render() {
@@ -77,7 +79,7 @@ export default class SignupPage extends Component {
           </form>
           <div class="form-section">
             <p>
-              Have an account? <a href="">Log in</a>{" "}
+              Have an account? <Link to ='/loginpage'>Log in</Link>
             </p>
           </div>
         </div>

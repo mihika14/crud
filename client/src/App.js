@@ -1,27 +1,20 @@
 import React from "react";
-import TableCrud from "./components/TableCrud";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignupPage from "./components/SignupPage/SignupPage";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import {Route , Routes } from 'react-router-dom'
 import HomePage from "./components/HomePage/HomePage";
+import MainPage from "./components/MainPage/MainPage";
 
 function App() {
   return (
-    // <Router>
-    //   <SignupPage />
-    //   <div className="App">
-    //     {/* <Routes>
-    //       <Route exact path="/" element={<LoginPage />} />
-    //       <Route path="/signin" element={<SignupPage />} />
-    //       <Route path="/table" element={<TableCrud />} />
-    //     </Routes> */}
-    //   </div>
-    // </Router>
-    <>
+  <>
+    <Routes>
+      <Route path="/"  element={<MainPage/>} />
+      <Route path="/loginpage" element={<LoginPage/>} />
+      <Route path="/signuppage" element={<SignupPage/>}/>
+      <Route path="/homepage" element={<HomePage />} />
+    </Routes>
 
-    {/* <SignupPage/>
-    <LoginPage/> */}
-    <HomePage/>
     </>
   );
 }
