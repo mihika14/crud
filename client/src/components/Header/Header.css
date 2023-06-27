@@ -6,4 +6,9 @@
   }
   .app-header {
     font-family: "Josefin Sans", sans-serif;
+    color: #6f1f02;
+  }
+
+  .app-content{
+    color: #6f1f02;
   }

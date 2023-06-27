@@ -14,9 +14,8 @@ const MainPage = () => {
       <button className="loginbtn">SIGN UP</button>
     </Link>
     </div>
-    <Spline scene="https://prod.spline.design/wCXlOKxnagJioFMr/scene.splinecode"/>
-
-
+    {/* used for the animation */}
+    <Spline scene="https://prod.spline.design/wCXlOKxnagJioFMr/scene.splinecode"/>  
     </div>
   );
 };

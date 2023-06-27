@@ -4,6 +4,7 @@ import SignupPage from "./components/SignupPage/SignupPage";
 import {Route , Routes } from 'react-router-dom'
 import HomePage from "./components/HomePage/HomePage";
 import MainPage from "./components/MainPage/MainPage";
+import './App.css'
 
 function App() {
   return (

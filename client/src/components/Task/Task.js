@@ -17,9 +17,11 @@ const Task = ({ task, onDelete, onEdit }) => {
         </div>
         <div>
           <p>
+            {/* the items get deleted  */}
             <FaTimes onClick={() => onDelete(task.id)} className="delIcon" />
           </p>
           <p>
+            {/* for editing the existing task */}
             <FaPencilAlt onClick={() => onEdit(task.id)} className="editIcon" />
           </p>
         </div>

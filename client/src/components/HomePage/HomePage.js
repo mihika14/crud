@@ -36,7 +36,7 @@ function HomePage() {
     Swal.fire({
       icon: "success",
       title: "Yay...",
-      text: "You have successfully added a new task!",
+      text: "TASK ADDED",
     });
     localStorage.setItem("taskAdded", JSON.stringify([...tasks, newTask]));
   };
@@ -46,8 +46,7 @@ function HomePage() {
     setTasks(deleteTask);
     Swal.fire({
       icon: "success",
-      title: "Oops...",
-      text: "You have successfully deleted a task!",
+      text: "TASK DELETED",
     });
     localStorage.setItem("taskAdded", JSON.stringify(deleteTask));
   };
@@ -69,8 +68,7 @@ function HomePage() {
     });
     Swal.fire({
       icon: "success",
-      title: "Yay...",
-      text: "You have successfully edited an existing task!",
+      text: "TASK EDITED",
     });
     localStorage.setItem("taskAdded", JSON.stringify(myData));
     window.location.reload();

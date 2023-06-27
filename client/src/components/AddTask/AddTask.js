@@ -9,23 +9,21 @@ const AddTask = ({ onSave }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    // sends a message if any of the details are missing
     if (!text && !day) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Fill in your task and date or close the form!",
+        text: "ADD TASK AND DAY",
       });
     } else if (!text && day) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Fill in your task!",
+        text: "ADD TASK",
       });
     } else if (text && !day) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Fill in your date!",
+        text: "ADD DAY",
       });
     } else {
       onSave({ text, day });
@@ -38,6 +36,7 @@ const AddTask = ({ onSave }) => {
   return (
     <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
+        {/* takes input for task */}
         <label>Task</label>
         <input
           type="text"
@@ -47,6 +46,7 @@ const AddTask = ({ onSave }) => {
         />
       </div>
       <div className="form-control">
+        {/* takes input for the day and time of when to do it  */}
         <label>Day & Time</label>
         <input
           type="text"

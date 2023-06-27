@@ -10,9 +10,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  //prevemts the automatic submission
     console.log(email, password);
-    fetch("http://localhost:5000/loginuser", {
+    fetch("http://localhost:5000/loginuser", {     //fetch makes post request to retrieve email and password
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,6 +24,9 @@ const LoginPage = () => {
         password,
       }),
     })
+
+    // checks if "ok" is recieved from the backend then provides access to the task manager
+    //useNavigate link to the homepage
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userRegister");
@@ -33,6 +36,11 @@ const LoginPage = () => {
           Swal.fire({
             icon: "success",
             text: "You have succesfully logged in",
+          });
+        }else{
+          Swal.fire({
+            icon: "error",
+            text: "Sign UP",
           });
         }
       });

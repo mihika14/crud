@@ -32,8 +32,9 @@ body {
   overflow: auto;
   min-height: 300px;
   padding: 30px;
-  border-radius: 5px;
-  background-color: #ccc;
+  border-radius: 30px;
+  background: lightgrey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
 }
 .btn {
   display: inline-block;
